@@ -22,6 +22,7 @@ public enum FileType {
     WASM         ("/wasm.png",    "Wasm Binary Code",    "*.wasm",  new WasmBinParser()),
     BITCOIN_BLOCK("/bitcoin.png", "Bitcoin Block",       "?",       new BlockParser()),
     BITCOIN_TX   ("/bitcoin.png", "Bitcoin Transaction", "?",       new TxParser()),
+    IBD   ("/java.png",    "IBD",          "*.ibd", new ClassFileParser()),
     UNKNOWN      ("/file.png",    "Unknown",             "*.*",     FileParser.NOP),
     ;
 

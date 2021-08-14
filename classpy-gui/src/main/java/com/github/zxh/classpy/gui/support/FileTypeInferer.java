@@ -27,6 +27,8 @@ public class FileTypeInferer {
             return FileType.LUA_BC;
         } else if (url.endsWith(".wasm")) {
             return FileType.WASM;
+        } else if (url.endsWith(".ibd")) {
+            return FileType.IBD;
         } else {
             return FileType.UNKNOWN;
         }
