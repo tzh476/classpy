@@ -4,6 +4,7 @@ import com.github.zxh.classpy.bitcoin.BlockParser;
 import com.github.zxh.classpy.bitcoin.TxParser;
 import com.github.zxh.classpy.classfile.ClassFileParser;
 import com.github.zxh.classpy.common.FileParser;
+import com.github.zxh.classpy.ibd.TableSpaceParser;
 import com.github.zxh.classpy.lua.BinaryChunkParser;
 import com.github.zxh.classpy.wasm.WasmBinParser;
 import javafx.scene.image.Image;
@@ -16,13 +17,13 @@ public enum FileType {
 
     FOLDER       ("/folder.png",  "Folder",              "/",       null),
     JAVA_JAR     ("/jar.png",     "Java JAR",            "*.jar",   null),
+    IBD   ("/ibd16.png",    "IBD",          "*.ibd", new TableSpaceParser()),
     JAVA_JMOD    ("/jmod.png",    "Java JMOD",           "*.jmod",  null),
     JAVA_CLASS   ("/java.png",    "Java Class",          "*.class", new ClassFileParser()),
     LUA_BC       ("/lua.png",     "Lua Binary Chunk",    "*.luac",  new BinaryChunkParser()),
     WASM         ("/wasm.png",    "Wasm Binary Code",    "*.wasm",  new WasmBinParser()),
     BITCOIN_BLOCK("/bitcoin.png", "Bitcoin Block",       "?",       new BlockParser()),
     BITCOIN_TX   ("/bitcoin.png", "Bitcoin Transaction", "?",       new TxParser()),
-    IBD   ("/java.png",    "IBD",          "*.ibd", new ClassFileParser()),
     UNKNOWN      ("/file.png",    "Unknown",             "*.*",     FileParser.NOP),
     ;
 

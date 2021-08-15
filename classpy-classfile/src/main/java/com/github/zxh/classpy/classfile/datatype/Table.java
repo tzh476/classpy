@@ -26,7 +26,7 @@ public class Table extends ClassFilePart {
     protected void readContent(ClassFileReader reader) {
         try {
             for (int i = 0; i < length.getValue(); i++) {
-                super.add(readEntry(reader));
+                add(readEntry(reader));
             }
         } catch (ReflectiveOperationException e) {
             throw new ParseException(e);
@@ -46,11 +46,11 @@ public class Table extends ClassFilePart {
     private AttributeInfo readAttributeInfo(ClassFileReader reader) {
         int attrNameIndex = reader.getShort(reader.getPosition());
         String attrName = reader.getConstantPool().getUtf8String(attrNameIndex);
-        
+
         AttributeInfo attr = AttributeFactory.create(attrName);
         attr.setName(attrName);
         attr.read(reader);
-        
+
         return attr;
     }
 

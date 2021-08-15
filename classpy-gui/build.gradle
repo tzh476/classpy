@@ -20,4 +20,5 @@ dependencies {
     compile project(':classpy-binarychunk')
     compile project(':classpy-bitcoin')
     compile project(':classpy-wasm')
+    compile project(':classpy-ibd')
 }

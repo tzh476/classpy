@@ -46,13 +46,15 @@ public final class MyMenuBar extends MenuBar {
         ImageView folderIcon = ImageHelper.createImageView("/folder.png");
         Menu openMenu = new Menu("_Open", folderIcon);
         openMenu.getItems().add(createOpenFolderItem(folderIcon));
-        openMenu.getItems().add(createOpenMenuItem(FileType.JAVA_JAR));
-        openMenu.getItems().add(createOpenMenuItem(FileType.JAVA_JMOD));
+//        openMenu.getItems().add(createOpenMenuItem(FileType.JAVA_JAR));
+//        openMenu.getItems().add(createOpenMenuItem(FileType.JAVA_JMOD));
         openMenu.getItems().add(createOpenMenuItem(FileType.JAVA_CLASS));
-        openMenu.getItems().add(createOpenMenuItem(FileType.LUA_BC));
-        openMenu.getItems().add(createOpenMenuItem(FileType.WASM));
-        openMenu.getItems().add(createOpenMenuItem(FileType.BITCOIN_BLOCK));
-        openMenu.getItems().add(createOpenMenuItem(FileType.BITCOIN_TX));
+        openMenu.getItems().add(createOpenMenuItem(FileType.IBD));
+
+//        openMenu.getItems().add(createOpenMenuItem(FileType.LUA_BC));
+//        openMenu.getItems().add(createOpenMenuItem(FileType.WASM));
+//        openMenu.getItems().add(createOpenMenuItem(FileType.BITCOIN_BLOCK));
+//        openMenu.getItems().add(createOpenMenuItem(FileType.BITCOIN_TX));
         openMenu.setMnemonicParsing(true);
         return openMenu;
     }
