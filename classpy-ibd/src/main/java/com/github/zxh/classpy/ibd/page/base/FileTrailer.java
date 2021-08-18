@@ -1,4 +1,4 @@
-package com.github.zxh.classpy.ibd.page.pagecontent;
+package com.github.zxh.classpy.ibd.page.base;
 
 import com.github.zxh.classpy.ibd.TableSpacePart;
 

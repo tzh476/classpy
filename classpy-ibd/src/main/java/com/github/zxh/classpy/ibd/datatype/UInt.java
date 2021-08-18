@@ -12,6 +12,7 @@ public abstract class UInt extends TableSpacePart {
 
     protected static final Function<TableSpaceReader, Integer> READ_U1 = TableSpaceReader::readUnsignedByte;
     protected static final Function<TableSpaceReader, Integer> READ_U2 = TableSpaceReader::readUnsignedShort;
+    protected static final Function<TableSpaceReader, Integer> READ_I2 = TableSpaceReader::readShort2Int;
     protected static final Function<TableSpaceReader, Integer> READ_U4 = TableSpaceReader::readInt;
 
     protected static final BiFunction<Integer, ConstantPool, String> TO_STRING =

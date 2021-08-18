@@ -1,10 +1,12 @@
 package com.github.zxh.classpy.ibd.datatype;
 
 import com.github.zxh.classpy.common.ParseException;
-import com.github.zxh.classpy.ibd.TableSpace;
 import com.github.zxh.classpy.ibd.TableSpacePart;
 import com.github.zxh.classpy.ibd.TableSpaceReader;
 
+/**
+ * 读取数组
+ */
 public class PartList extends TableSpacePart {
     private final Class<? extends TableSpacePart> entryClass;
     private final Integer size;

@@ -50,6 +50,9 @@ public abstract class TableSpacePart extends FilePart {
     protected final void u2hex(String name) {
         this.add(name, new U2Hex());
     }
+    protected final void i2hex(String name) {
+        this.add(name, new I2Hex());
+    }
 
     protected final void u2(String name) {
         this.add(name, new U2());
@@ -70,8 +73,8 @@ public abstract class TableSpacePart extends FilePart {
     }
     protected final void part(String name,
                                   Class<? extends TableSpacePart> entryClass) {
-        Part page = new Part(entryClass);
-        this.add(name, page);
+        Part part = new Part(entryClass);
+        this.add(name, part);
     }
 
     protected final void bytes(String name, Integer count) {

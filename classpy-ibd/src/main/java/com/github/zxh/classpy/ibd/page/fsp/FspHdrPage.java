@@ -1,10 +1,8 @@
-package com.github.zxh.classpy.ibd.page;
+package com.github.zxh.classpy.ibd.page.fsp;
 
 import com.github.zxh.classpy.ibd.TableSpacePart;
-import com.github.zxh.classpy.ibd.page.pagecontent.FileHeader;
-import com.github.zxh.classpy.ibd.page.pagecontent.FileSpaceHeader;
-import com.github.zxh.classpy.ibd.page.pagecontent.FileTrailer;
-import com.github.zxh.classpy.ibd.page.pagecontent.XdesEntry;
+import com.github.zxh.classpy.ibd.page.base.FileHeader;
+import com.github.zxh.classpy.ibd.page.base.FileTrailer;
 
 /**
  *    public FileSpaceHeader fileSpaceHeader;

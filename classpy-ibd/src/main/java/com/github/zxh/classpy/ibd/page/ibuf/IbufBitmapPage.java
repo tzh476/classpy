@@ -1,8 +1,8 @@
-package com.github.zxh.classpy.ibd.page;
+package com.github.zxh.classpy.ibd.page.ibuf;
 
 import com.github.zxh.classpy.ibd.TableSpacePart;
-import com.github.zxh.classpy.ibd.page.pagecontent.FileHeader;
-import com.github.zxh.classpy.ibd.page.pagecontent.FileTrailer;
+import com.github.zxh.classpy.ibd.page.base.FileHeader;
+import com.github.zxh.classpy.ibd.page.base.FileTrailer;
 
 /**
  *     public byte[] changeBufferBitmap;//8192 byte,4bits per page

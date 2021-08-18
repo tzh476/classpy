@@ -1,4 +1,4 @@
-package com.github.zxh.classpy.ibd.page.pagecontent;
+package com.github.zxh.classpy.ibd.page.inode;
 
 import com.github.zxh.classpy.ibd.TableSpacePart;
 import com.github.zxh.classpy.ibd.datatype.U4;

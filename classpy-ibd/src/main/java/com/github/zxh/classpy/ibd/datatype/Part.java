@@ -5,6 +5,9 @@ import com.github.zxh.classpy.common.ParseException;
 import com.github.zxh.classpy.ibd.TableSpacePart;
 import com.github.zxh.classpy.ibd.TableSpaceReader;
 
+/**
+ * 读取对象
+ */
 public class Part extends TableSpacePart {
     private final Class<? extends TableSpacePart> entryClass;
 
@@ -25,6 +28,7 @@ public class Part extends TableSpacePart {
         TableSpacePart cur = entryClass.newInstance();
         cur.read(reader);
         for (FilePart fc : cur.getParts()) {
+            //this其实就是parent的属性，属性在调用构造方法就生成了，现在是填充属性的值
             this.add((TableSpacePart) fc);
         }
     }
