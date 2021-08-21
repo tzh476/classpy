@@ -5,4 +5,5 @@ public class Constant {
     public final static Integer FILE_TRAILER_SIZE = 8;
     public final static Integer SLOT_SIZE = 2;
 
+    public static final Integer FILE_HEADER_SIZE = 38;
 }

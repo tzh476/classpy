@@ -20,7 +20,9 @@ public class PartList extends TableSpacePart {
     protected void readContent(TableSpaceReader reader) {
         try {
             for (int i = 0; i < size; i++) {
-                super.add(readEntry(reader));
+                TableSpacePart part = readEntry(reader);
+                part.setDesc(i + "-" + part.getClass().getSimpleName());
+                super.add(part);
             }
         } catch (ReflectiveOperationException e) {
             throw new ParseException(e);

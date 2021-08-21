@@ -1,6 +1,7 @@
 package com.github.zxh.classpy.gui;
 
 import com.github.zxh.classpy.gui.fs.DirTreeView;
+import com.github.zxh.classpy.gui.parsed.IbdParsedViewerPane;
 import com.github.zxh.classpy.gui.parsed.ParsedViewerPane;
 import com.github.zxh.classpy.gui.support.*;
 import com.github.zxh.classpy.gui.fs.ZipTreeView;
@@ -240,6 +241,9 @@ public class ClasspyApp extends Application {
                 ZipTreeView treeView = new ZipTreeView(ofr.url, ofr.zipRootNode);
                 treeView.setOpenFileHandler(this::openFile);
                 tab.setContent(treeView.getTreeView());
+            } else if(ofr.fileType.isIbdOrIbdata()){
+                IbdParsedViewerPane viewerPane = new IbdParsedViewerPane(ofr.fileRootNode, ofr.hexText);
+                tab.setContent(viewerPane);
             } else {
                 ParsedViewerPane viewerPane = new ParsedViewerPane(ofr.fileRootNode, ofr.hexText);
                 tab.setContent(viewerPane);

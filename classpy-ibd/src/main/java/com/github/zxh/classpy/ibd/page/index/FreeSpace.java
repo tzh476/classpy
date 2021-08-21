@@ -15,14 +15,24 @@ public class FreeSpace extends TableSpacePart {
         this.fileHeader = fileHeader;
         this.pageHeader = pageHeader;
     }
-
+//不使用该方法，会报错。不确定fileheader中的pageoffset是否是指page在ibdata1文件中以16kb为单位的offset
+//    @Override
+//    protected void readContent(TableSpaceReader reader) {
+//        Integer pageOffset = ((UInt) fileHeader.getParts().get(1)).getValue();
+//        Integer slotSize = ((UInt) pageHeader.getParts().get(0)).getValue() * Constant.SLOT_SIZE;
+//        Integer nPageSize = (pageOffset + 1) * Constant.PAGE_SIZE;
+//        Integer curPosition = reader.getPosition();
+//        Integer freeSpaceSize = nPageSize - curPosition - Constant.FILE_TRAILER_SIZE - slotSize;
+//        Bytes bytes = new Bytes(freeSpaceSize);
+//        add("freeSpace", bytes);
+//        bytes.read(reader);
+//    }
     @Override
     protected void readContent(TableSpaceReader reader) {
-        Integer pageOffset = ((UInt) fileHeader.getParts().get(1)).getValue();
         Integer slotSize = ((UInt) pageHeader.getParts().get(0)).getValue() * Constant.SLOT_SIZE;
-        Integer nPageSize = (pageOffset + 1) * Constant.PAGE_SIZE;
         Integer curPosition = reader.getPosition();
-        Integer freeSpaceSize = nPageSize - curPosition - Constant.FILE_TRAILER_SIZE - slotSize;
+        Integer curPageReadSize = curPosition % Constant.PAGE_SIZE;
+        Integer freeSpaceSize = Constant.PAGE_SIZE - curPageReadSize - Constant.FILE_TRAILER_SIZE - slotSize;
         Bytes bytes = new Bytes(freeSpaceSize);
         add("freeSpace", bytes);
         bytes.read(reader);

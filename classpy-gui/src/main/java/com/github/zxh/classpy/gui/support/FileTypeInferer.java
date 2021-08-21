@@ -29,6 +29,8 @@ public class FileTypeInferer {
             return FileType.WASM;
         } else if (url.endsWith(".ibd")) {
             return FileType.IBD;
+        }else if (url.contains("ibdata")) {
+            return FileType.IBDATA;
         } else {
             return FileType.UNKNOWN;
         }

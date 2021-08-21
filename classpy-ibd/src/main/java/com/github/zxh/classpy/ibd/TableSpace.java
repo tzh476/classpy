@@ -3,6 +3,7 @@ package com.github.zxh.classpy.ibd;
 
 import com.github.zxh.classpy.common.FilePart;
 import com.github.zxh.classpy.ibd.datatype.UInt;
+import com.github.zxh.classpy.ibd.page.AllocatedPage;
 import com.github.zxh.classpy.ibd.page.base.FileHeader;
 import com.github.zxh.classpy.ibd.page.fsp.FspHdrPage;
 import com.github.zxh.classpy.ibd.page.inode.INodePage;
@@ -14,14 +15,8 @@ import java.util.List;
 import static com.github.zxh.classpy.ibd.page.PageType.*;
 
 public class TableSpace extends TableSpacePart {
-
     {
         part("FspHdrPage", FspHdrPage.class);
-        //        part("IbufBitmapPage", IbufBitmapPage.class);
-        //        part("INodePage", INodePage.class);
-        //        for(int i = 0; i < 2; i ++){
-        //            part("IndexPage", IndexPage.class);
-        //        }
     }
 
     protected void readContent(TableSpaceReader reader) {
@@ -34,22 +29,23 @@ public class TableSpace extends TableSpacePart {
             FileHeader fileHeader = new FileHeader();
             fileHeader.read(reader);
             int pageType = fileHeader.getPageType();
-            switch (pageType){
+            switch (pageType) {
                 case PAGE_TYPE_ALLOCATED:
-                    new IndexPage(fileHeader);
+                    page = new AllocatedPage(fileHeader);
+                    add("AllocatedPage", page);
                     break;
                 case PAGE_UNDO_LOG:
                     new IndexPage(fileHeader);
                     break;
                 case PAGE_INODE:
-                    page = new INodePage();
+                    page = new INodePage(fileHeader);
                     add("INodePage", page);
                     break;
                 case PAGE_IBUF_FREE_LIST:
                     new IndexPage(fileHeader);
                     break;
                 case PAGE_IBUF_BITMAP:
-                    page = new IbufBitmapPage();
+                    page = new IbufBitmapPage(fileHeader);
                     add("IbufBitmapPage", page);
                     break;
                 case PAGE_TYPE_SYS:
@@ -59,7 +55,7 @@ public class TableSpace extends TableSpacePart {
                     new IndexPage(fileHeader);
                     break;
                 case PAGE_TYPE_FSP_HDR:
-                    page = new FspHdrPage();
+                    page = new FspHdrPage(true);
                     add("FspHdrPage", page);
                     break;
                 case PAGE_TYPE_XDES:
@@ -73,22 +69,13 @@ public class TableSpace extends TableSpacePart {
                     add("IndexPage", page);
                     break;
             }
-            page.add(fileHeader);
             page.readContent(reader);
-         //   part("FileHeader", FileHeader.class);
-
-
         }
-
-        //        for (FilePart fc : getParts()) {
-        //            ((TableSpacePart) fc).read(reader);
-        //        }
     }
 
     public int getPageNum() {
-        FilePart spaceHeaderPart =  getParts().get(0).getParts().get(1);
+        FilePart spaceHeaderPart = getParts().get(0).getParts().get(1);
         return ((UInt) spaceHeaderPart.getParts().get(2)).getValue();
     }
-
 
 }

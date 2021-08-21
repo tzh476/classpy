@@ -50,6 +50,8 @@ public final class MyMenuBar extends MenuBar {
 //        openMenu.getItems().add(createOpenMenuItem(FileType.JAVA_JMOD));
         openMenu.getItems().add(createOpenMenuItem(FileType.JAVA_CLASS));
         openMenu.getItems().add(createOpenMenuItem(FileType.IBD));
+        openMenu.getItems().add(createOpenMenuItem(FileType.IBDATA));
+
 
 //        openMenu.getItems().add(createOpenMenuItem(FileType.LUA_BC));
 //        openMenu.getItems().add(createOpenMenuItem(FileType.WASM));
